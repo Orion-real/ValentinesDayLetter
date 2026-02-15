@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url('RedVintage.png');
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    min-height: 100svh;
+    background-color: pink;
+    font-family: Arial, sans-serif;
+    animation: fadeIn .7s ease-in-out;
+}
+.SwipeContainer {
+    display: flex;
+    height: 90svh;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 10%;
+    -webkit-overflow-scrolling: touch;
+}
+.CardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 5dvw;
+    padding: 0 10dvw; 
+}
+.FlowerCard {
+    flex: 0 0 80dvw;       
+    height: 100%;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(139, 17, 17);
+    border-radius: 20%;
+    padding: 20px;
+}
+.FlowerCard img {
+    background-color: white;
+    width: 60%;           
+    max-width: 65svh;      
+    height: auto;          
+    aspect-ratio: 1/1;     
+    object-fit: cover;
+    object-position: 50% 0;
+    border-radius: 50%;
+    border: 5px solid #ff6b8b;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.FlowerCard h2 {
+    color: #ff4d6d;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 70%;
+}
+.SwipeContainer::-webkit-scrollbar {
+    display: none;
+}
+.SwipeContainer {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.back-button {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff4d6d; 
+    color: white;
+    border-radius: 50%;       
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;             
+    transition: all 0.3s ease;
+    border: 2px solid white;
+}
+.back-button:hover {
+    background-color: #ff3355;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+.back-button:active {
+    transform: scale(0.95);
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* For mobile - adjust position if needed */
+@media (max-width: 768px) {
+    .back-button {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+}

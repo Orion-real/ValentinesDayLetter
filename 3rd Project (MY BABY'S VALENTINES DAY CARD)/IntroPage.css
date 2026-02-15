@@ -1,0 +1,138 @@
+body {
+    background-image: url('BGIntro1.png');
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+    animation: fadeIn .7s ease-in-out;
+}
+
+.ParentContainer {
+    background-image: url('IntroYesNoBG.jpg');
+    display: flex;
+    flex-direction: column;
+    border: palevioletred solid 1px;
+    margin: 10%;
+    padding: 20px;
+    overflow: visible !important;
+    position: relative;
+    z-index: 1;
+}
+
+/*Hidden click counters*/
+#clickcounter1, #clickcounter2, #clickcounter3, #clickcounter4, #clickcounter5 {
+    display: none;
+}
+
+.AskValentineTitle {
+    font-size: 3rem;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.YesAndNoButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+}
+
+.btn {
+    background-color: antiquewhite;
+    text-align: center;
+    text-decoration-line: none;
+    color: black;
+    flex: 1;
+    border: 2px black solid;
+    padding: 2dvw;
+    font-size: 4rem;
+    font-weight: bolder;
+    margin: 5px ;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: pink;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Size changes - YES grows, NO shrinks */
+#clickcounter1:checked ~ .ParentContainer .btn-yes {
+    transform: scale(1.5);
+    z-index: 10;
+}
+#clickcounter2:checked ~ .ParentContainer .btn-yes {
+    transform: scale(2);
+    z-index: 10;
+}
+#clickcounter3:checked ~ .ParentContainer .btn-yes {
+    transform: scale(3);
+    z-index: 10;
+}
+#clickcounter4:checked ~ .ParentContainer .btn-yes {
+    transform: scale(5);
+    z-index: 10;
+}
+#clickcounter5:checked ~ .ParentContainer .btn-yes {
+    transform: scale(10);
+    z-index: 10;
+    position: relative;
+}
+
+#clickcounter1:checked ~ .ParentContainer .YesAndNoButtons,
+#clickcounter2:checked ~ .ParentContainer .YesAndNoButtons,
+#clickcounter3:checked ~ .ParentContainer .YesAndNoButtons,
+#clickcounter4:checked ~ .ParentContainer .YesAndNoButtons,
+#clickcounter5:checked ~ .ParentContainer .YesAndNoButtons {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+
+#clickcounter1:checked ~ .ParentContainer .btn-no {
+    transform: scale(0.8);
+}
+#clickcounter2:checked ~ .ParentContainer .btn-no {
+    transform: scale(0.6);
+}
+#clickcounter3:checked ~ .ParentContainer .btn-no {
+    transform: scale(0.4);
+}
+#clickcounter4:checked ~ .ParentContainer .btn-no {
+    transform: scale(0.2);
+    opacity: 0.5;
+}
+#clickcounter5:checked ~ .ParentContainer .btn-no {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+.btn-yes {
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+.btn-no {
+    display: inline-block;
+    background-color: antiquewhite;
+    border: 2px black solid;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
