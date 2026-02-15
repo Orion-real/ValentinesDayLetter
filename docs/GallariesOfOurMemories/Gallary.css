@@ -7,7 +7,11 @@ body {
     justify-content: center;
     overflow: hidden;
     animation: fadeIn .9s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
 }
+
 .PictureLayoutContainer {
     justify-content: center;
     align-items: center;
@@ -20,7 +24,9 @@ body {
     overflow: hidden;
     position: relative;
     background-color: wheat;
+    border-radius: 10px; /* Added for better mobile look */
 }
+
 .Conveyer-belt {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,12 +36,15 @@ body {
     animation: scrollUp 30s linear infinite;
     animation-play-state: running;
 }
+
 .Conveyer-belt:hover { 
     animation-play-state: paused; 
 }
+
 .image-set {
     display: contents;
 }
+
 img {
     border: 2px black solid;
     border-radius: 10px;
@@ -46,10 +55,12 @@ img {
     transition: transform 0.3s ease;
     cursor: pointer;
 }
+
 img:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
 .back-button {
     position: fixed;
     bottom: 30px;
@@ -80,6 +91,7 @@ img:hover {
 .back-button:active {
     transform: scale(0.95);
 }
+
 /*Animation for the conveyer-belt like motion jahahaha*/
 @keyframes scrollUp {
     0% {
@@ -90,22 +102,149 @@ img:hover {
     }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-    .PictureLayoutContainer {
-        
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+/* ===== TABLET PORTRAIT (768px - 1024px) ===== */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .PictureLayoutContainer {
-        
+        width: 98dvw;
+        height: 90svh;
+        margin: 1%;
+        padding: 1%;
+    }
+    
+    .Conveyer-belt {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5%;
+    }
+    
+    img {
+        height: 250px;
+    }
+    
+    .back-button {
+        bottom: 25px;
+        left: 25px;
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
     }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+/* ===== TABLET LANDSCAPE ===== */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
     .PictureLayoutContainer {
-        
+        width: 96dvw;
+        height: 88svh;
+    }
+    
+    .Conveyer-belt {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5%;
+    }
+    
+    img {
+        height: 200px;
+    }
+    
+    .back-button {
+        bottom: 20px;
+        left: 20px;
     }
 }
 
+/* ===== MOBILE PORTRAIT (up to 767px) - 1 COLUMN ONLY ===== */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+    body {
+        overflow: hidden;
+        align-items: flex-start;
+    }
+    
+    .PictureLayoutContainer {
+        width: 98dvw;
+        height: 90svh;
+        margin: 1%;
+        padding: 1%;
+        border-radius: 8px;
+    }
+    
+    .Conveyer-belt {
+        grid-template-columns: 1fr !important; /* FORCE 1 COLUMN */
+        gap: 10px;
+        animation: scrollUp 20s linear infinite; /* Faster scroll on mobile */
+    }
+    
+    img {
+        height: auto;
+        max-height: 75vh;
+        width: 100%;
+        object-fit: contain; /* Better for portrait mobile viewing */
+        border: 1px black solid;
+    }
+    
+    img:hover {
+        transform: scale(1.02); /* Smaller hover effect on mobile */
+    }
+    
+    .back-button {
+        bottom: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+/* ===== MOBILE LANDSCAPE (up to 950px height) - 2 COLUMNS ===== */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+    .PictureLayoutContainer {
+        width: 98dvw;
+        height: 85svh;
+        padding: 0.5%;
+    }
+    
+    .Conveyer-belt {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns in landscape */
+        gap: 1%;
+        animation: scrollUp 25s linear infinite;
+    }
+    
+    img {
+        height: 150px;
+    }
+    
+    .back-button {
+        bottom: 15px;
+        left: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
+
+/* ===== SMALL MOBILE (up to 480px) ===== */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    .Conveyer-belt {
+        grid-template-columns: 1fr !important; /* FORCE 1 COLUMN */
+        gap: 5px;
+    }
+    
+    img {
+        max-height: 70vh;
+    }
+    
+    .back-button {
+        bottom: 15px;
+        left: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}

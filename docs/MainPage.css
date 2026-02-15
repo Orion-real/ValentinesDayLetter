@@ -8,6 +8,9 @@ body {
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     animation: fadeIn .7s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .MainContainer {
@@ -22,6 +25,7 @@ body {
     max-width: 1200px; 
     box-sizing: border-box; 
 }
+
 .ButtonContainer {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
@@ -32,8 +36,8 @@ body {
     height: 90svh;
     max-width: 1000px; 
     box-sizing: border-box;
-
 }
+
 .ButtonCustom {
     background-color: plum;
     display: flex;
@@ -41,15 +45,17 @@ body {
     align-items: center;
     min-height: 100px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     border-radius: 40%;
     font-size: 1.3rem;
     font-weight: bold; 
     text-decoration-line: none;
     text-align: center;
     line-height: 140%;
-    transition: transform 0.3s ease;
+    padding: 20px;
+    word-break: break-word; /* Prevents text overflow */
 }
+
 .ButtonCustom:hover {
     background-color: pink;
     outline: 2px solid black;
@@ -66,42 +72,128 @@ body {
     }
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
+/* ===== TABLET PORTRAIT (768px - 1024px) ===== */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .MainContainer {
-        margin: 10px;
-        padding: 15px;
+        width: 95vw;
+        height: 90vh;
+        margin: 15px;
     }
     
     .ButtonContainer {
-        grid-template-rows: repeat(2, minmax(80px, 1fr));
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 20px;
+        gap: 18px;
+        width: 95dvw;
+        height: 85svh;
     }
     
     .ButtonCustom {
-        min-height: 80px;
-        padding: 20px;
-        margin: 0;
-        font-size: 14px;
+        min-height: 120px;
+        font-size: 1.2rem;
+        padding: 18px;
+        border-radius: 35%;
     }
 }
-/* Small mobile devices */
-@media (max-width: 480px) {
+
+/* ===== TABLET LANDSCAPE ===== */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
     .MainContainer {
-        margin: 5px;
-        padding: 10px;
+        width: 90vw;
+        height: 90vh;
     }
     
     .ButtonContainer {
-        gap: 10px;
+        gap: 18px;
+        width: 85dvw;
+        height: 80svh;
+    }
+    
+    .ButtonCustom {
+        min-height: 100px;
+        font-size: 1.1rem;
         padding: 15px;
+    }
+}
+
+/* ===== MOBILE PORTRAIT (up to 767px) ===== */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+    body {
+        align-items: flex-start;
+        padding-top: 10px;
+    }
+    
+    .MainContainer {
+        width: 98vw;
+        height: auto;
+        min-height: 90vh;
+        margin: 10px auto;
+        padding: 5px;
+    }
+    
+    .ButtonContainer {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        width: 95dvw;
+        height: auto;
+        min-height: 70vh;
+        padding: 10px;
+    }
+    
+    .ButtonCustom {
+        min-height: 0;
+        aspect-ratio: 1/1; /* Makes buttons square */
+        font-size: clamp(0.8rem, 4vw, 1.1rem);
+        padding: 8px;
+        border-radius: 30%;
+        word-break: break-word;
+    }
+}
+
+/* ===== MOBILE LANDSCAPE ===== */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+    body {
+        align-items: center;
+    }
+    
+    .MainContainer {
+        width: 98vw;
+        height: 95vh;
+        margin: 5px;
+    }
+    
+    .ButtonContainer {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        width: 90dvw;
+        height: 85svh;
     }
     
     .ButtonCustom {
         min-height: 70px;
-        padding: 15px;
-        font-size: 12px;
+        font-size: clamp(0.8rem, 3vw, 1rem);
+        padding: 8px;
+        border-radius: 25%;
+    }
+}
+
+/* ===== SMALL MOBILE (up to 480px) ===== */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    .MainContainer {
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    .ButtonContainer {
+        gap: 8px;
+        padding: 8px;
+        width: 98dvw;
+    }
+    
+    .ButtonCustom {
+        font-size: clamp(0.7rem, 3.5vw, 0.9rem);
+        padding: 5px;
+        border-radius: 25%;
+        aspect-ratio: 1/1;
     }
 }

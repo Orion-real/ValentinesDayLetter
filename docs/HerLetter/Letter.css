@@ -1,32 +1,42 @@
 body {
-    background-image :url('LetterBg.png') ;
+    background-image: url('LetterBg.png');
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     justify-items: center;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Brush Script MT", cursive;
     background-color: #f5f5f5;
     animation: fadeIn .7s ease-in-out;
+    background-size: cover; /* Makes background responsive */
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
+
 p {
     font-size: clamp(16px, 5vw, 40px);
     flex-direction: column;
     text-align: center;
+    margin: 10px; /* Added for mobile spacing */
 }
+
 .MainContainer {
     display: flex;
     border: 2px black solid;
     margin: 2%;
     width: 65dvw;
     background-color: rgb(255, 224, 224);
+    max-width: 1200px; /* Prevents container from getting too wide on large screens */
 }
+
 .ValentinesBorder {
     border: 50px solid transparent;
     padding: 20px;
     border-image: url('ValentinesBorder.jpg') 30 round;
 }
+
 .back-button {
     position: fixed;
     bottom: 30px;
@@ -47,19 +57,147 @@ p {
     transition: all 0.3s ease;
     border: 2px solid white;
 }
+
 .back-button:hover {
     background-color: #ff3355;
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
+
 .back-button:active {
     transform: scale(0.95);
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
     }
     100% {
         opacity: 1;
+    }
+}
+
+/* ===== TABLET RESPONSIVE (768px - 1024px) ===== */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .MainContainer {
+        width: 80dvw;
+        margin: 3%;
+    }
+    
+    .ValentinesBorder {
+        border: 35px solid transparent;
+        padding: 15px;
+    }
+    
+    p {
+        font-size: clamp(18px, 4vw, 35px);
+    }
+    
+    .back-button {
+        bottom: 25px;
+        left: 25px;
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE (up to 767px) ===== */
+@media screen and (max-width: 767px) {
+    body {
+        background-attachment: scroll; /* Better performance on mobile */
+        align-items: flex-start; /* Align to top on mobile */
+        padding: 10px 0;
+    }
+    
+    .MainContainer {
+        width: 90dvw;
+        margin: 5% auto;
+        flex-direction: column; /* Stack content vertically */
+    }
+    
+    .ValentinesBorder {
+        border: 20px solid transparent;
+        padding: 10px;
+        border-image: url('ValentinesBorder.jpg') 20 round;
+    }
+    
+    p {
+        font-size: clamp(16px, 6vw, 28px);
+        margin: 8px;
+        line-height: 1.4; /* Better readability on mobile */
+    }
+    
+    .back-button {
+        bottom: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ===== SMALL MOBILE (up to 480px) ===== */
+@media screen and (max-width: 480px) {
+    .MainContainer {
+        width: 95dvw;
+        margin: 3% auto;
+    }
+    
+    .ValentinesBorder {
+        border: 15px solid transparent;
+        padding: 8px;
+    }
+    
+    p {
+        font-size: clamp(14px, 5vw, 22px);
+        margin: 5px;
+    }
+    
+    .back-button {
+        bottom: 15px;
+        left: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
+
+/* ===== LANDSCAPE MODE FOR MOBILE ===== */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body {
+        align-items: center;
+        padding: 20px 0;
+    }
+    
+    .MainContainer {
+        width: 80dvw;
+        margin: 2% auto;
+    }
+    
+    .ValentinesBorder {
+        border: 25px solid transparent;
+        padding: 10px;
+    }
+    
+    p {
+        font-size: clamp(14px, 4vh, 24px);
+    }
+    
+    .back-button {
+        bottom: 10px;
+        left: 10px;
+    }
+}
+
+/* ===== HIGH-RES TABLETS (like iPad Pro) ===== */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .MainContainer {
+        width: 75dvw;
+    }
+    
+    p {
+        font-size: clamp(20px, 4vw, 38px);
     }
 }
